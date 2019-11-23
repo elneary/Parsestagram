@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="125dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:src="@drawable/nav_logo_whiteout" />
+
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background="@color/disabled_text_off_white"
+        android:text="Logout"
+        android:textColor="@color/grey_6" />
+
+
+    <ImageView
+        android:id="@+id/ivPostImage"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="false"
+        android:scaleType="centerCrop"
+        android:visibility="invisible"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:hint="Description..."
+        android:visibility="invisible"
+        android:background="@drawable/edittextborder"
+        android:inputType="none"
+        />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:text="Post your photo!"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
