@@ -30,8 +30,9 @@ public class MainActivity extends AppCompatActivity {
         final Fragment fragment1 = new PostsFragment();
         final Fragment fragment3 = new ProfileFragment();
 
-
         final FragmentManager fragmentManager = getSupportFragmentManager();
+
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

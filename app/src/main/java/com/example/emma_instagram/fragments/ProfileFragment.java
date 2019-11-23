@@ -1,6 +1,7 @@
 package com.example.emma_instagram.fragments;
 
 import android.util.Log;
+import android.view.View;
 
 import com.example.emma_instagram.Post;
 import com.parse.FindCallback;
@@ -11,6 +12,11 @@ import com.parse.ParseUser;
 import java.util.List;
 
 public class ProfileFragment extends PostsFragment {
+
+    @Override
+    public void setLogoutButton(View view){
+        profileContainer.setVisibility(View.VISIBLE);
+    };
 
     @Override
     protected void queryPosts() {

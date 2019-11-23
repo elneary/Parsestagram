@@ -1,10 +1,13 @@
 package com.example.emma_instagram.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,12 +16,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.emma_instagram.LoginActivity;
 import com.example.emma_instagram.Post;
 import com.example.emma_instagram.PostsAdapter;
 import com.example.emma_instagram.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +35,10 @@ public class PostsFragment extends Fragment {
     protected PostsAdapter adapter;
     protected ArrayList<Post> mPosts;
     private SwipeRefreshLayout swipeContainer;
+    protected Button btnLogout;
+    protected RelativeLayout profileContainer;
+
+
 
     @Nullable
     @Override
@@ -42,13 +51,15 @@ public class PostsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         rvPosts = view.findViewById(R.id.rvPosts);
         //create data source
-        mPosts = new ArrayList();
+        mPosts = new ArrayList<>();
         //create the adapter
         adapter = new PostsAdapter(getContext(), mPosts);
         //set the adapter on the recycler view
         rvPosts.setAdapter(adapter);
         //set the layout manager on the recycler view
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+        profileContainer = view.findViewById(R.id.profileContainer);
+
         queryPosts();
 
         // Lookup the swipe container view
@@ -64,8 +75,26 @@ public class PostsFragment extends Fragment {
                 queryPosts();
             }
         });
+
+        btnLogout = view.findViewById(R.id.btnLogout);
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "User attempted to log out");
+                ParseUser.logOut();
+                Intent i = new Intent(getContext(), LoginActivity.class);
+                startActivity(i);
+                getActivity().finish();
+                Log.i(TAG, "User logged out");
+            }
+        });
+        setLogoutButton(view);
     }
 
+    public void setLogoutButton(View view){
+        profileContainer.setVisibility(View.GONE);
+    };
 
     protected void queryPosts() {
         ParseQuery<Post> postQuery = new ParseQuery<Post>(Post.class);

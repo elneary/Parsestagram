@@ -5,6 +5,13 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+
+
+
 @ParseClassName("Post")
 public class Post extends ParseObject {
 
@@ -12,6 +19,7 @@ public class Post extends ParseObject {
     public static final String KEY_IMAGE = "image";
     public static final String KEY_CREATED_AT = "createdAt";
     public static final String KEY_USER = "user";
+
 
 
     public ParseUser getUser() {
@@ -26,6 +34,13 @@ public class Post extends ParseObject {
         return getParseFile(KEY_IMAGE);
     }
 
+    public String getTimestamp(){
+        Date date = getCreatedAt();
+        DateFormat df = new SimpleDateFormat("h:ma |  MM-dd-yyyy");
+        String reportDate = df.format(date);
+        return reportDate;
+    }
+
     public void setImage(ParseFile imageFile){
         put(KEY_IMAGE, imageFile);
     }
@@ -37,5 +52,6 @@ public class Post extends ParseObject {
     public void setDescription(String description){
         put(KEY_DESCRIPTION, description);
     }
+
 
 }

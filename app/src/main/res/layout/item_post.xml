@@ -5,26 +5,55 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:id="@+id/postContainer"
     android:layout_margin="10dp">
 
-    <TextView
-        android:id="@+id/tvHandle"
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:id="@+id/topRow"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
-        tools:text="elneary" />
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/tvHandle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+            tools:text="elneary" />
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/tvHandle"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_alignBottom="@id/tvHandle"
+            tools:text="elneary"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTimestamp"
+            android:layout_alignBottom="@id/tvHandle"
+            android:text="Published at"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         android:scaleType="centerCrop"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="Beautiful day"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="20dp"/>
 </LinearLayout>

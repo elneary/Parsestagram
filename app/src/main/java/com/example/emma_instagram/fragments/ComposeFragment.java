@@ -21,7 +21,6 @@ import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
-import com.example.emma_instagram.LoginActivity;
 import com.example.emma_instagram.Post;
 import com.example.emma_instagram.R;
 import com.parse.ParseException;
@@ -60,19 +59,6 @@ public class ComposeFragment extends Fragment {
         etDescription = view.findViewById(R.id.etDescription);
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
-        btnLogout = view.findViewById(R.id.btnLogout);
-
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "User attempted to log out");
-                ParseUser.logOut();
-                Intent i = new Intent(getContext(), LoginActivity.class);
-                startActivity(i);
-                getActivity().finish();
-                Log.i(TAG, "User logged out");
-            }
-        });
 
         //queryPosts();
         btnSubmit.setOnClickListener(new View.OnClickListener() {

@@ -19,6 +19,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
 
     private Context context;
     private List<Post> posts;
+    public static final String KEY_HANDLE = "handle";
+
 
     public PostsAdapter(Context context, List<Post> posts){
         this.context = context;
@@ -61,15 +63,20 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
         private TextView tvHandle;
         private ImageView ivImage;
         private TextView tvDescription;
+        private TextView tvTimestamp;
+        private TextView tvUsername;
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
             tvHandle = itemView.findViewById(R.id.tvHandle);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
+            tvUsername = itemView.findViewById(R.id.tvUsername);
+
         }
 
-        public void bind(Post post){
+        public void bind(final Post post){
             // bind view elements to post
             tvHandle.setText(post.getUser().getUsername());
             ParseFile image = post.getImage();
@@ -78,6 +85,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
             tvDescription.setText(post.getDescription());
+            tvTimestamp.setText(post.getTimestamp());
+            tvUsername.setText("@" + post.getUser().getString(KEY_HANDLE));
         }
     }
 }
